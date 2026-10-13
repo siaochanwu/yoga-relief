@@ -50,3 +50,13 @@
 - **dunder 方法 `__len__`、`__contains__`**：讓自訂類別支援 `len(store)` 與 `"k" in store`，用起來像內建容器。
 - **`set(a) == set(b)`**：比較「集合是否相同」而忽略順序。
 - **`Path.with_suffix` / `Path.exists`**：`pathlib` 把路徑當物件操作，比字串拼接安全。
+
+## Task 7：呼叫 Claude
+
+- **依賴注入（dependency injection）**：`generate_advice(client, ...)` 把 client 當參數傳進來，而不是在函式裡自己 `anthropic.Anthropic()`。測試就能塞一個假的 `FakeClient`，不用真的打 API、不用 key、不花錢。
+- **鴨子型別（duck typing）**：`FakeClient` 沒有繼承任何 SDK 類別，只要有 `.messages.parse()` 就能用。Python 看的是「有沒有這個方法」，不是「是不是這個類別」。
+- **keyword-only 參數**（`*` 之後的參數）：強迫呼叫端寫 `model=...`，避免位置搞錯。
+- **structured output**：`output_format=AdviceOutput` 讓 SDK 要求模型輸出符合 pydantic schema 的 JSON，並直接解析成物件（`response.parsed_output`）。
+- **信任但要驗證**：schema 只保證「形狀」對，不保證「內容」對（例如 `order` 可能漏一個 id）。所以還是要自己 `_validate`。
+- **triple-quoted string 當 prompt**：多行字串放在模組層級當常數，測試可以直接比對。
+- **`getattr(obj, "name", default)`**：安全地讀可能不存在的屬性。
