@@ -60,3 +60,15 @@
 - **信任但要驗證**：schema 只保證「形狀」對，不保證「內容」對（例如 `order` 可能漏一個 id）。所以還是要自己 `_validate`。
 - **triple-quoted string 當 prompt**：多行字串放在模組層級當常數，測試可以直接比對。
 - **`getattr(obj, "name", default)`**：安全地讀可能不存在的屬性。
+
+## Task 8：產生腳本
+
+- **邏輯放套件、入口放 scripts/**：`scripts/build_advice.py` 只有三行，真正的程式在 `yoga_relief/build_advice.py`。這樣測試可以 `import` 它，而 `scripts/` 不需要是套件。
+- **`if __name__ == "__main__":`**：只有「直接執行這個檔」時才跑；被 import 時不會。
+- **`@dataclass`**：自動產生 `__init__`、`__eq__`、`__repr__`，適合純資料的小物件（這裡的 `Summary`）。`field(default_factory=list)` 是可變預設值的正確寫法。
+- **`itertools.product`**：多層 for 迴圈的扁平寫法，產生所有組合。
+- **`enumerate(..., start=1)`**：同時拿到索引與元素，`start=1` 讓進度顯示從 1 開始。
+- **`Callable[[str], None]` 當參數**：把「怎麼輸出 log」也注入進來，測試可以收集訊息而不是印到螢幕。
+- **區域 import**（`main()` 裡的 `import anthropic`）：讓只跑測試的人不需要 API 相關設定就能 import 這個模組；平常不建議，但入口函式是合理的例外。
+- **`except Exception` 的取捨**：一般程式碼應該抓具體的例外；長時間跑的批次腳本例外，因為「一筆壞了繼續跑」比「整批中斷」更重要，所以明確註解原因並用 `# noqa` 標記。
+- **`datetime.now(UTC).isoformat()`**：永遠用帶時區的時間，不要 naive datetime。
