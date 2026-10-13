@@ -16,3 +16,14 @@
 - **`Field(min_length=1)`**：對 list 做「至少一項」的限制，不用自己寫 if。
 - **類別繼承當作「欄位擴充」**：`AdviceRequest(Answers)` 多一個 `body_part`，所以任何收 `Answers` 的函式都能直接收 `AdviceRequest`（里氏替換）。
 - **可變預設值**：pydantic 的 `cautions: list[str] = []` 是安全的（每個實例會拷貝）；一般 Python 函式的預設參數 `def f(x=[])` 則會共用同一個 list，這是常見陷阱。
+
+## Task 3：Repository
+
+- **Repository 模式**：把「資料從哪來、怎麼驗證」包在一個類別裡，其他程式只呼叫 `poses_for()`，不碰 YAML。以後換成資料庫，只改這一個檔。
+- **`@classmethod` 當替代建構子**：`Repository.load(dir)` 讀檔後再呼叫 `cls(...)`；建構子本身只收已經是物件的資料，測試就能不經過檔案系統直接建。
+- **`@property`**：讓 `repo.body_parts` 看起來像屬性但其實是方法，順便回傳拷貝避免外部改到內部 list。
+- **自訂例外 `DataError(ValueError)`**：啟動時抓這一種例外就能印出清楚訊息；繼承 `ValueError` 讓不認識它的程式也能用一般方式處理。
+- **`raise ... from e`**：保留原始例外的追蹤鏈，除錯時看得到底層原因。
+- **`TypeAdapter(list[Pose])`**：對「不是 BaseModel 的型別」（這裡是 list）做 pydantic 驗證。
+- **PEP 695 泛型語法 `def f[T](...)`**（3.12+）：宣告型別變數，讓型別檢查器知道回傳的是 `list[T]`。
+- **`Counter`**：數重複用的標準工具，比自己寫 dict 計數簡潔。
