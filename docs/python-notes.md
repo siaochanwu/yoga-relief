@@ -40,3 +40,13 @@
 - **`pytest.mark.parametrize`**：一個測試函式跑多組資料，每組獨立顯示 pass/fail。邊界案例（差一點就命中）一定要列進去。
 - **`is` 比較 Enum 成員**：Enum 成員是單例，用 `is` 比 `==` 更明確表達「是不是同一個成員」。
 - **把中性名稱給中間變數**（`chronic_severe`、`injury_not_mild`）：規則讀起來像規格書，之後加規則只要多一行。
+
+## Task 6：AdviceStore
+
+- **`logging` 而不是 `print`**：模組頂端 `log = logging.getLogger(__name__)`，訊息會帶模組名稱、可以設等級、測試可用 `caplog` 擷取。
+- **atomic write**：先寫到 `.tmp` 再 `os.replace()`。寫到一半當機也不會留下半截的 JSON（腳本每筆都存檔，這很重要）。
+- **`json.dumps(ensure_ascii=False)`**：中文直接存，不然檔案全是 `小`，diff 看不懂。
+- **`sorted()` key 再輸出**：同樣內容永遠產出同樣檔案，git diff 只會顯示真的改了的部分。
+- **dunder 方法 `__len__`、`__contains__`**：讓自訂類別支援 `len(store)` 與 `"k" in store`，用起來像內建容器。
+- **`set(a) == set(b)`**：比較「集合是否相同」而忽略順序。
+- **`Path.with_suffix` / `Path.exists`**：`pathlib` 把路徑當物件操作，比字串拼接安全。
