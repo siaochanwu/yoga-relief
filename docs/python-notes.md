@@ -27,3 +27,9 @@
 - **`TypeAdapter(list[Pose])`**：對「不是 BaseModel 的型別」（這裡是 list）做 pydantic 驗證。
 - **PEP 695 泛型語法 `def f[T](...)`**（3.12+）：宣告型別變數，讓型別檢查器知道回傳的是 `list[T]`。
 - **`Counter`**：數重複用的標準工具，比自己寫 dict 計數簡潔。
+
+## Task 4：正式資料檔
+
+- **資料即程式碼**：動作內容放 YAML 隨 git 版控，改內容走 PR、有歷史、有測試保護（`test_data.py`）。這是「設定與程式分離」但又「一起版控」的折衷。
+- **YAML 與 Python 型別的對應**：`[a, b]` → list，`key: value` → dict，`[]` → 空 list。載入後立刻用 pydantic 轉成物件，之後程式碼不再碰 dict。
+- **測試分層**：`test_repository.py` 用小的假資料測「規則」，`test_data.py` 用真資料測「內容」。兩者分開，規則改了不用改內容測試。

@@ -1,0 +1,476 @@
+- id: cat_cow
+  name_zh: 貓牛式
+  name_en: Cat-Cow
+  body_parts: [lower_back, upper_back, neck]
+  intensity: gentle
+  duration: 8–10 次呼吸
+  steps:
+    - 四足跪姿，手腕在肩膀正下方，膝蓋在髖部正下方。
+    - 吸氣時腹部下沉、尾骨上翹、視線看向前方（牛式）。
+    - 吐氣時拱起背部、下巴收向胸口（貓式）。
+    - 跟著呼吸慢慢交替。
+  cautions:
+    - 動作要慢，脖子不要用力甩。
+  contraindications:
+    - 手腕急性疼痛
+    - 懷孕後期
+
+- id: child_pose
+  name_zh: 嬰兒式
+  name_en: Child's Pose
+  body_parts: [lower_back, upper_back, hip, shoulder]
+  intensity: gentle
+  duration: 1–2 分鐘
+  steps:
+    - 跪坐，大腳趾相碰，膝蓋打開與髖同寬或更寬。
+    - 吐氣時上身往前趴下，額頭貼地或墊在手背上。
+    - 手臂向前伸直或放在身體兩側，放鬆肩膀。
+    - 緩慢深呼吸，感覺背部隨呼吸擴張。
+  cautions:
+    - 膝蓋不適可在大腿與小腿之間墊毯子。
+  contraindications:
+    - 膝蓋急性受傷
+    - 懷孕（膝蓋打開更寬並避免壓到腹部）
+
+- id: supine_twist
+  name_zh: 仰臥扭轉
+  name_en: Supine Spinal Twist
+  body_parts: [lower_back, glute, upper_back]
+  intensity: gentle
+  duration: 每側 1 分鐘
+  steps:
+    - 仰躺，雙膝彎曲併攏，雙臂向兩側打開成 T 字。
+    - 吐氣時雙膝一起倒向右側，頭轉向左邊。
+    - 肩膀盡量貼地，讓重力帶動扭轉。
+    - 換邊重複。
+  cautions:
+    - 膝蓋可墊枕頭，不要勉強貼地。
+  contraindications:
+    - 椎間盤急性問題
+    - 懷孕
+
+- id: knees_to_chest
+  name_zh: 抱膝式
+  name_en: Knees-to-Chest
+  body_parts: [lower_back, glute]
+  intensity: gentle
+  duration: 1 分鐘
+  steps:
+    - 仰躺，雙膝彎曲抱向胸口。
+    - 雙手抱住小腿或膝後，肩膀放鬆貼地。
+    - 可以左右輕輕搖晃，按摩下背。
+  cautions:
+    - 頭與肩膀留在地上，不要抬起。
+  contraindications:
+    - 膝蓋急性受傷
+    - 懷孕
+
+- id: sphinx
+  name_zh: 人面獅身式
+  name_en: Sphinx
+  body_parts: [lower_back, chest]
+  intensity: moderate
+  duration: 5–8 次呼吸
+  steps:
+    - 俯臥，雙腿向後伸直，腳背貼地。
+    - 手肘放在肩膀正下方，前臂平行貼地。
+    - 吸氣時胸口向前上方提起，下背保持放鬆。
+  cautions:
+    - 下背有擠壓感就把手肘往前移、降低高度。
+  contraindications:
+    - 下背急性疼痛
+    - 懷孕
+
+- id: neck_side_stretch
+  name_zh: 頸側伸展
+  name_en: Seated Neck Side Stretch
+  body_parts: [neck]
+  intensity: gentle
+  duration: 每側 5 次呼吸
+  steps:
+    - 坐正，雙肩下沉。
+    - 右耳慢慢靠向右肩，左手指尖往地板延伸。
+    - 可將右手輕放在頭上增加一點重量，不要往下拉。
+    - 換邊重複。
+  cautions:
+    - 只用手的重量，不要主動拉扯。
+  contraindications:
+    - 頸椎急性受傷
+
+- id: chin_tuck
+  name_zh: 收下巴
+  name_en: Chin Tuck
+  body_parts: [neck, upper_back]
+  intensity: gentle
+  duration: 10 次
+  steps:
+    - 坐正或靠牆站，視線平視前方。
+    - 下巴水平往後收，像要做出雙下巴，後頸會有拉長感。
+    - 停 3 秒後放鬆，重複。
+  cautions:
+    - 不是低頭，下巴保持水平。
+  contraindications: []
+
+- id: thread_the_needle
+  name_zh: 穿針式
+  name_en: Thread the Needle
+  body_parts: [shoulder, upper_back, neck]
+  intensity: gentle
+  duration: 每側 5–8 次呼吸
+  steps:
+    - 四足跪姿。
+    - 右手掌心朝上，從左手與左膝之間穿過，右肩與右耳側貼地。
+    - 左手可往前延伸或扶在背後，感受右肩胛與上背的伸展。
+    - 換邊重複。
+  cautions:
+    - 頭部重量放在地上，脖子不出力。
+  contraindications:
+    - 肩關節急性受傷
+
+- id: shoulder_rolls
+  name_zh: 肩膀畫圓
+  name_en: Shoulder Rolls
+  body_parts: [shoulder, neck]
+  intensity: gentle
+  duration: 前後各 8 圈
+  steps:
+    - 坐正或站立，雙臂自然垂放。
+    - 吸氣時雙肩往上提向耳朵，往後繞一圈、往下放鬆。
+    - 做完向後的圈，再換成向前。
+  cautions:
+    - 圈畫大一點、速度慢。
+  contraindications: []
+
+- id: eagle_arms
+  name_zh: 鷹式手臂
+  name_en: Eagle Arms
+  body_parts: [shoulder, upper_back]
+  intensity: moderate
+  duration: 每側 5 次呼吸
+  steps:
+    - 雙臂向前伸，右臂在上交叉於左臂。
+    - 手肘彎曲，前臂互繞，掌心相對（做不到就手背相貼）。
+    - 手肘慢慢抬高、往前推，感受肩胛之間的伸展。
+    - 換邊重複。
+  cautions:
+    - 肩膀下沉，不要聳肩。
+  contraindications:
+    - 肩關節急性受傷
+
+- id: cow_face_arms
+  name_zh: 牛面式手臂
+  name_en: Cow Face Arms
+  body_parts: [shoulder, chest]
+  intensity: moderate
+  duration: 每側 5 次呼吸
+  steps:
+    - 右手舉高、彎肘往背後垂下；左手從下方繞到背後往上。
+    - 雙手在背後互扣，扣不到就用毛巾或瑜伽繩連接。
+    - 胸口打開，頭保持正中。
+    - 換邊重複。
+  cautions:
+    - 上面那隻手的手肘指向天花板，不要壓到頭。
+  contraindications:
+    - 肩關節急性受傷
+
+- id: puppy_pose
+  name_zh: 小狗伸展式
+  name_en: Extended Puppy Pose
+  body_parts: [shoulder, upper_back, chest]
+  intensity: moderate
+  duration: 5–8 次呼吸
+  steps:
+    - 四足跪姿，髖部留在膝蓋正上方。
+    - 雙手往前走，胸口往地板沉，額頭或下巴輕貼地。
+    - 手臂伸直、手肘離地，感受腋下與上背的伸展。
+  cautions:
+    - 下背不要過度下壓，核心微收。
+  contraindications:
+    - 膝蓋急性受傷
+    - 肩關節急性受傷
+
+- id: cobra
+  name_zh: 眼鏡蛇式
+  name_en: Cobra
+  body_parts: [chest, lower_back]
+  intensity: moderate
+  duration: 3–5 次呼吸，做 2 次
+  steps:
+    - 俯臥，雙手放在胸口兩側，手肘貼近身體。
+    - 吸氣時用背部力量把胸口抬離地面，手只是輔助。
+    - 肩膀遠離耳朵，視線看向前方。
+    - 吐氣時慢慢放下。
+  cautions:
+    - 抬得低一點沒關係，下背不能有刺痛。
+  contraindications:
+    - 下背急性疼痛
+    - 懷孕
+    - 腹部手術剛恢復
+
+- id: supported_fish
+  name_zh: 支撐魚式
+  name_en: Supported Fish
+  body_parts: [chest, upper_back]
+  intensity: gentle
+  duration: 2–3 分鐘
+  steps:
+    - 把捲起的毛巾或瑜伽磚縱向放在地上。
+    - 仰躺，讓毛巾沿著脊椎在肩胛之間，頭有支撐。
+    - 雙臂向兩側打開，掌心朝上，讓胸口自然打開。
+    - 放鬆呼吸。
+  cautions:
+    - 下背懸空不舒服就把膝蓋彎起來。
+  contraindications:
+    - 頸椎急性受傷
+
+- id: chest_opener_clasp
+  name_zh: 背後扣手開胸
+  name_en: Standing Chest Opener
+  body_parts: [chest, shoulder]
+  intensity: gentle
+  duration: 5–8 次呼吸
+  steps:
+    - 站立，雙手在背後十指互扣，掌心相對。
+    - 吸氣時胸口向前上方提起，手臂往後下方延伸。
+    - 肩胛往中間靠攏，肩膀遠離耳朵。
+  cautions:
+    - 手扣不到就各抓毛巾兩端。
+  contraindications:
+    - 肩關節急性受傷
+
+- id: wrist_circles
+  name_zh: 手腕畫圓
+  name_en: Wrist Circles
+  body_parts: [wrist]
+  intensity: gentle
+  duration: 每方向 10 圈
+  steps:
+    - 雙手十指互扣。
+    - 手腕慢慢畫 8 字或圓圈，兩個方向都做。
+    - 最後甩一甩手放鬆。
+  cautions:
+    - 慢慢畫，範圍做到舒服的最大。
+  contraindications: []
+
+- id: prayer_stretch
+  name_zh: 合掌手腕伸展
+  name_en: Prayer Wrist Stretch
+  body_parts: [wrist]
+  intensity: gentle
+  duration: 每方向 5 次呼吸
+  steps:
+    - 胸前合掌，手肘往兩側抬高。
+    - 合掌慢慢往下壓到肚臍高度，手掌不要分開，感受前臂內側伸展。
+    - 再反過來手背相貼，手肘往下沉，伸展前臂外側。
+  cautions:
+    - 有麻感立刻停止。
+  contraindications:
+    - 手腕急性受傷
+    - 腕隧道症候群急性期
+
+- id: tabletop_wrist_release
+  name_zh: 四足跪姿手腕放鬆
+  name_en: Tabletop Wrist Release
+  body_parts: [wrist]
+  intensity: moderate
+  duration: 每個方向 5 次呼吸
+  steps:
+    - 四足跪姿，手指朝前。
+    - 把手掌轉成手指朝向膝蓋，掌根貼地，身體輕輕往後坐。
+    - 再把手背貼地、手指朝向膝蓋，伸展前臂外側。
+  cautions:
+    - 重量放在膝蓋上，手只承受一點點。
+  contraindications:
+    - 手腕急性受傷
+
+- id: low_lunge
+  name_zh: 低弓步
+  name_en: Low Lunge
+  body_parts: [hip, thigh]
+  intensity: moderate
+  duration: 每側 5–8 次呼吸
+  steps:
+    - 右腳往前踩一大步，右膝在腳踝正上方，左膝跪地。
+    - 髖部往前往下沉，感受左髖前側與大腿的伸展。
+    - 上身直立，雙手放在右膝或舉高。
+    - 換邊重複。
+  cautions:
+    - 後膝下面墊毯子。
+  contraindications:
+    - 膝蓋急性受傷
+
+- id: figure_four
+  name_zh: 仰臥四字式
+  name_en: Supine Figure-Four
+  body_parts: [hip, glute]
+  intensity: gentle
+  duration: 每側 1 分鐘
+  steps:
+    - 仰躺，雙膝彎曲，腳踩地。
+    - 右腳踝放到左大腿上，右膝往外打開。
+    - 雙手抱住左大腿後側，把左腿往胸口拉。
+    - 換邊重複。
+  cautions:
+    - 腳踝要放在大腿上，不是膝蓋上。
+  contraindications:
+    - 膝蓋急性受傷
+
+- id: butterfly
+  name_zh: 束角式
+  name_en: Bound Angle (Butterfly)
+  body_parts: [hip, thigh]
+  intensity: gentle
+  duration: 1–2 分鐘
+  steps:
+    - 坐姿，腳掌相對，膝蓋往兩側打開。
+    - 雙手握住腳掌，坐骨往下扎根、脊椎拉長。
+    - 可以保持直立，或吐氣時上身慢慢向前。
+  cautions:
+    - 坐在毯子或瑜伽磚上會比較容易把背坐直。
+  contraindications:
+    - 鼠蹊部拉傷
+
+- id: pigeon
+  name_zh: 鴿式
+  name_en: Pigeon
+  body_parts: [hip, glute]
+  intensity: moderate
+  duration: 每側 1–2 分鐘
+  steps:
+    - 從四足跪姿，把右膝帶到右手腕後方，右小腿橫放在前。
+    - 左腿往後伸直，腳背貼地，髖部盡量正對前方。
+    - 上身可以直立，或趴向前方放鬆。
+    - 換邊重複。
+  cautions:
+    - 前側髖下面墊毯子讓骨盆平正。
+    - 膝蓋有壓力就改做仰臥四字式。
+  contraindications:
+    - 膝蓋急性受傷
+
+- id: reclined_quad
+  name_zh: 側臥股四頭肌伸展
+  name_en: Side-Lying Quad Stretch
+  body_parts: [thigh, knee]
+  intensity: gentle
+  duration: 每側 5–8 次呼吸
+  steps:
+    - 左側躺，左手枕頭下或伸直。
+    - 右膝彎曲，右手抓住右腳背，腳跟往臀部帶。
+    - 骨盆微微前推，感受大腿前側伸展。
+    - 換邊重複。
+  cautions:
+    - 抓不到腳就用毛巾套住。
+  contraindications:
+    - 膝蓋急性受傷
+
+- id: half_hamstring
+  name_zh: 單腿前彎
+  name_en: Seated Head-to-Knee
+  body_parts: [thigh, knee, calf, lower_back]
+  intensity: gentle
+  duration: 每側 5–8 次呼吸
+  steps:
+    - 坐姿，右腿伸直，左腳掌貼在右大腿內側。
+    - 吸氣脊椎拉長，吐氣時從髖部往前彎，雙手放在右腿上。
+    - 右腳尖勾起，感受大腿後側與小腿伸展。
+    - 換邊重複。
+  cautions:
+    - 背保持直，寧可彎得少。
+  contraindications:
+    - 大腿後側肌肉拉傷
+
+- id: legs_up_wall
+  name_zh: 靠牆抬腿
+  name_en: Legs Up the Wall
+  body_parts: [knee, calf, ankle, lower_back]
+  intensity: gentle
+  duration: 3–5 分鐘
+  steps:
+    - 側坐靠近牆，躺下的同時把雙腿沿著牆面抬起。
+    - 臀部盡量靠近牆，雙臂放在身體兩側。
+    - 閉上眼睛，慢慢呼吸。
+  cautions:
+    - 大腿後側太緊就離牆遠一點。
+  contraindications:
+    - 青光眼
+    - 懷孕後期
+
+- id: supported_hero
+  name_zh: 支撐英雄式
+  name_en: Supported Hero
+  body_parts: [knee, thigh, ankle]
+  intensity: moderate
+  duration: 1–2 分鐘
+  steps:
+    - 跪姿，雙膝併攏、雙腳往兩側分開。
+    - 在雙腳之間放瑜伽磚或厚毯，臀部坐上去。
+    - 脊椎拉長，雙手放在大腿上。
+  cautions:
+    - 膝蓋有任何刺痛就加高支撐或停止。
+  contraindications:
+    - 膝蓋急性受傷
+    - 腳踝急性受傷
+
+- id: downward_dog
+  name_zh: 下犬式
+  name_en: Downward-Facing Dog
+  body_parts: [calf, thigh, shoulder, upper_back]
+  intensity: moderate
+  duration: 5–8 次呼吸
+  steps:
+    - 四足跪姿，雙手往前一個手掌距離。
+    - 吐氣時臀部往上推，身體呈倒 V 形。
+    - 膝蓋可以微彎，重點是脊椎拉長。
+    - 腳跟輪流往地板踩，伸展小腿。
+  cautions:
+    - 手腕不適可握拳或墊高掌根。
+  contraindications:
+    - 手腕急性受傷
+    - 高血壓未控制
+
+- id: calf_wall_stretch
+  name_zh: 靠牆小腿伸展
+  name_en: Wall Calf Stretch
+  body_parts: [calf, ankle]
+  intensity: gentle
+  duration: 每側 5–8 次呼吸
+  steps:
+    - 面對牆，雙手扶牆。
+    - 右腳往後踩一步，腳跟貼地、腳尖朝前。
+    - 前膝微彎，身體往牆靠近，感受右小腿伸展。
+    - 換邊重複。
+  cautions:
+    - 後腳跟不要離地。
+  contraindications:
+    - 阿基里斯腱急性受傷
+
+- id: ankle_circles
+  name_zh: 腳踝畫圓
+  name_en: Ankle Circles
+  body_parts: [ankle]
+  intensity: gentle
+  duration: 每方向 10 圈
+  steps:
+    - 坐姿，右腿伸直或翹在左腿上。
+    - 腳踝慢慢畫圓，兩個方向都做。
+    - 再勾腳尖、壓腳尖各 10 次。
+  cautions:
+    - 只動腳踝，小腿放鬆。
+  contraindications:
+    - 腳踝急性扭傷
+
+- id: bridge
+  name_zh: 橋式
+  name_en: Bridge
+  body_parts: [glute, lower_back, chest]
+  intensity: moderate
+  duration: 5 次呼吸，做 3 次
+  steps:
+    - 仰躺，雙膝彎曲，腳踩地與髖同寬，腳跟靠近臀部。
+    - 吐氣時腳踩地、臀部慢慢抬起，從尾骨開始一節一節離地。
+    - 肩膀貼地，胸口向下巴靠近。
+    - 吸氣時一節一節放下。
+  cautions:
+    - 膝蓋保持朝前，不要往外開。
+  contraindications:
+    - 頸椎急性受傷
