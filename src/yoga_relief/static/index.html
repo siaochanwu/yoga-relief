@@ -2,10 +2,63 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Yoga Relief</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <div id="app">載入中…</div>
+  <div id="app">
+    <header class="topbar">
+      <button class="icon-btn" id="btn-home" aria-label="回首頁">⌂</button>
+      <h1>Yoga Relief</h1>
+      <button class="icon-btn" id="btn-history" aria-label="紀錄">☰</button>
+    </header>
+
+    <main>
+      <!-- 1. 選部位 -->
+      <section id="screen-select" class="screen">
+        <div class="view-toggle" role="tablist">
+          <button class="tab active" data-view="front" role="tab">正面</button>
+          <button class="tab" data-view="back" role="tab">背面</button>
+        </div>
+        <p class="hint">點選酸痛的部位</p>
+        <div id="body-map" class="body-map" aria-label="人體圖"></div>
+        <div class="select-footer">
+          <p id="selected-name" class="selected-name">尚未選擇</p>
+          <button id="btn-next" class="btn primary" disabled>下一步</button>
+        </div>
+      </section>
+
+      <!-- 2. 三題問卷 -->
+      <section id="screen-questions" class="screen hidden">
+        <h2 id="q-title"></h2>
+        <div id="questions"></div>
+        <div class="row">
+          <button id="btn-back-select" class="btn">上一步</button>
+          <button id="btn-submit" class="btn primary" disabled>看動作</button>
+        </div>
+      </section>
+
+      <!-- 3. 結果 -->
+      <section id="screen-result" class="screen hidden">
+        <div id="result"></div>
+        <button id="btn-restart" class="btn">重新選擇</button>
+      </section>
+
+      <!-- 4. 紀錄 -->
+      <section id="screen-history" class="screen hidden">
+        <h2>最近的查詢</h2>
+        <ul id="history-list" class="history-list"></ul>
+        <button id="btn-clear-history" class="btn danger">清除全部紀錄</button>
+      </section>
+
+      <p id="error" class="error hidden"></p>
+    </main>
+
+    <footer class="disclaimer">
+      本工具提供的內容為一般性伸展建議，不是醫療診斷或治療。疼痛持續、加劇，或伴隨麻木、無力、發燒等症狀，請就醫。
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
 </body>
 </html>

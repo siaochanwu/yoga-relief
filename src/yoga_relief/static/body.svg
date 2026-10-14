@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 410" role="img" aria-label="人體圖">
+  <g id="view-front">
+    <circle class="deco" cx="100" cy="32" r="24"/>
+    <rect class="part" data-part="neck" x="89" y="56" width="22" height="16" rx="5"><title>頸部</title></rect>
+    <rect class="part" data-part="shoulder" x="46" y="72" width="42" height="22" rx="8"><title>肩膀</title></rect>
+    <rect class="part" data-part="shoulder" x="112" y="72" width="42" height="22" rx="8"><title>肩膀</title></rect>
+    <rect class="deco" x="89" y="72" width="22" height="24" rx="4"/>
+    <rect class="deco" x="44" y="96" width="18" height="92" rx="8"/>
+    <rect class="deco" x="138" y="96" width="18" height="92" rx="8"/>
+    <rect class="part" data-part="wrist" x="42" y="190" width="22" height="16" rx="5"><title>手腕</title></rect>
+    <rect class="part" data-part="wrist" x="136" y="190" width="22" height="16" rx="5"><title>手腕</title></rect>
+    <rect class="deco" x="42" y="208" width="22" height="22" rx="7"/>
+    <rect class="deco" x="136" y="208" width="22" height="22" rx="7"/>
+    <rect class="part" data-part="chest" x="72" y="96" width="56" height="50" rx="6"><title>胸部</title></rect>
+    <rect class="part" data-part="hip" x="72" y="148" width="56" height="36" rx="6"><title>髖部</title></rect>
+    <rect class="part" data-part="thigh" x="72" y="186" width="26" height="80" rx="6"><title>大腿</title></rect>
+    <rect class="part" data-part="thigh" x="102" y="186" width="26" height="80" rx="6"><title>大腿</title></rect>
+    <rect class="part" data-part="knee" x="72" y="268" width="26" height="24" rx="6"><title>膝蓋</title></rect>
+    <rect class="part" data-part="knee" x="102" y="268" width="26" height="24" rx="6"><title>膝蓋</title></rect>
+    <rect class="deco" x="74" y="294" width="22" height="70" rx="6"/>
+    <rect class="deco" x="104" y="294" width="22" height="70" rx="6"/>
+    <rect class="part" data-part="ankle" x="72" y="366" width="26" height="20" rx="5"><title>腳踝／足底</title></rect>
+    <rect class="part" data-part="ankle" x="102" y="366" width="26" height="20" rx="5"><title>腳踝／足底</title></rect>
+    <rect class="deco" x="66" y="388" width="32" height="14" rx="5"/>
+    <rect class="deco" x="102" y="388" width="32" height="14" rx="5"/>
+  </g>
+  <g id="view-back" class="hidden">
+    <circle class="deco" cx="100" cy="32" r="24"/>
+    <rect class="part" data-part="neck" x="89" y="56" width="22" height="16" rx="5"><title>頸部</title></rect>
+    <rect class="part" data-part="shoulder" x="46" y="72" width="42" height="22" rx="8"><title>肩膀</title></rect>
+    <rect class="part" data-part="shoulder" x="112" y="72" width="42" height="22" rx="8"><title>肩膀</title></rect>
+    <rect class="deco" x="89" y="72" width="22" height="24" rx="4"/>
+    <rect class="deco" x="44" y="96" width="18" height="110" rx="8"/>
+    <rect class="deco" x="138" y="96" width="18" height="110" rx="8"/>
+    <rect class="deco" x="42" y="208" width="22" height="22" rx="7"/>
+    <rect class="deco" x="136" y="208" width="22" height="22" rx="7"/>
+    <rect class="part" data-part="upper_back" x="72" y="96" width="56" height="50" rx="6"><title>上背</title></rect>
+    <rect class="part" data-part="lower_back" x="72" y="148" width="56" height="36" rx="6"><title>下背／腰</title></rect>
+    <rect class="part" data-part="glute" x="72" y="186" width="56" height="36" rx="6"><title>臀部</title></rect>
+    <rect class="part" data-part="thigh" x="72" y="224" width="26" height="56" rx="6"><title>大腿</title></rect>
+    <rect class="part" data-part="thigh" x="102" y="224" width="26" height="56" rx="6"><title>大腿</title></rect>
+    <rect class="part" data-part="calf" x="72" y="282" width="26" height="82" rx="6"><title>小腿</title></rect>
+    <rect class="part" data-part="calf" x="102" y="282" width="26" height="82" rx="6"><title>小腿</title></rect>
+    <rect class="part" data-part="ankle" x="72" y="366" width="26" height="20" rx="5"><title>腳踝／足底</title></rect>
+    <rect class="part" data-part="ankle" x="102" y="366" width="26" height="20" rx="5"><title>腳踝／足底</title></rect>
+    <rect class="deco" x="66" y="388" width="32" height="14" rx="5"/>
+    <rect class="deco" x="102" y="388" width="32" height="14" rx="5"/>
+  </g>
+</svg>

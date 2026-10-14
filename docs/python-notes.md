@@ -85,3 +85,10 @@
 - **`monkeypatch.setenv / delenv`**：測試裡暫時改環境變數，測完自動還原。
 - **`dict | dict`**（3.9+）：合併兩個 dict，右邊覆蓋左邊，測試裡用來「基底 + 覆寫」。
 - **`model_copy(update=...)`**：pydantic 物件是不可變思維，要改就產生新的拷貝。
+
+## Task 10：前端骨架（Python 的部分）
+
+- **用 Python 測前端資產**：`test_static.py` 用 `re` 解析 SVG，確認每個部位在它宣告的視圖裡都有可點區塊。前端沒有自動化測試框架時，這種「資料一致性測試」是最便宜的保險。
+- **`re.S`（DOTALL）**：讓 `.` 也能匹配換行，抓多行的 `<g>...</g>`。
+- **`rf"..."`**：raw + f-string 同時用，正則裡的反斜線不用跳脫，又能插變數。
+- **`StaticFiles` 與 `FileResponse`**：FastAPI 直接當靜態檔伺服器，不需要 nginx 就能跑整個 app。
