@@ -168,10 +168,80 @@ function renderResult(res) {
   });
 }
 
-// ---- 紀錄（Task 12 實作）----
-function saveHistory(payload, result) {}
-function renderHistory() {}
-function clearHistory() {}
+// ---- 紀錄（localStorage）----
+const HISTORY_KEY = 'yoga_relief_history';
+const HISTORY_MAX = 20;
+
+function safeParse(text) {
+  try {
+    const data = JSON.parse(text);
+    return Array.isArray(data) ? data : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function loadHistory() {
+  try {
+    return safeParse(localStorage.getItem(HISTORY_KEY) || '[]');
+  } catch (e) {          // localStorage 被封鎖（隱私模式等）
+    return [];
+  }
+}
+
+function saveHistory(payload, result) {
+  const entry = {
+    ts: new Date().toISOString(),
+    body_part: payload.body_part,
+    body_part_name: result.body_part.name_zh,
+    severity: payload.severity,
+    duration: payload.duration,
+    cause: payload.cause,
+    result,
+  };
+  try {
+    const list = [entry, ...loadHistory()].slice(0, HISTORY_MAX);
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(list));
+  } catch (e) {          // 配額滿或被封鎖：不記錄，功能照常
+  }
+}
+
+function formatTs(iso) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+function renderHistory() {
+  const ul = $('#history-list');
+  ul.innerHTML = '';
+  const list = loadHistory();
+  $('#btn-clear-history').classList.toggle('hidden', list.length === 0);
+  if (list.length === 0) {
+    ul.appendChild(el('li', 'history-empty', '還沒有紀錄。'));
+    return;
+  }
+  for (const item of list) {
+    const li = el('li');
+    li.appendChild(el('div', 'ts', formatTs(item.ts)));
+    li.appendChild(el('div', null,
+      `${item.body_part_name || item.body_part}・${LABELS.severity[item.severity] || item.severity}`));
+    li.addEventListener('click', () => {
+      if (!item.result) return;
+      state.result = item.result;
+      renderResult(item.result);
+      showScreen('result');
+    });
+    ul.appendChild(li);
+  }
+}
+
+function clearHistory() {
+  if (!confirm('確定要清除全部紀錄？')) return;
+  try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+  renderHistory();
+}
 
 // ---- 事件綁定與啟動 ----
 function bindEvents() {
