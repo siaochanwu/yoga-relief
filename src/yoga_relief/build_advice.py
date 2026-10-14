@@ -9,7 +9,7 @@ from itertools import product
 from pathlib import Path
 
 from yoga_relief.advisor import DEFAULT_ADVICE_PATH, AdviceStore, advice_key
-from yoga_relief.claude_client import generate_advice
+from yoga_relief.claude_client import generate_advice, make_anthropic_client
 from yoga_relief.models import AdviceRecord, Answers, BodyPart, Cause, Duration, Severity
 from yoga_relief.repository import DATA_DIR, Repository
 from yoga_relief.triage import should_seek_medical
@@ -75,8 +75,6 @@ def run(
 
 
 def main(argv: list[str] | None = None) -> int:
-    import anthropic
-
     from yoga_relief.config import Settings
 
     parser = argparse.ArgumentParser(description="產生 advice.json")
@@ -87,7 +85,7 @@ def main(argv: list[str] | None = None) -> int:
     settings = Settings()
     repo = Repository.load(DATA_DIR)
     store = AdviceStore.load(DEFAULT_ADVICE_PATH)
-    client = anthropic.Anthropic(timeout=30.0)
+    client = make_anthropic_client(settings)
 
     summary = run(
         repo, store, client, model=settings.claude_model, out_path=DEFAULT_ADVICE_PATH,

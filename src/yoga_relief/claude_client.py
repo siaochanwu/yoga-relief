@@ -3,6 +3,9 @@
 這個模組不決定何時呼叫（那是 build_advice 與 LiveAdvisor 的事），只負責「怎麼呼叫」。
 """
 
+from pydantic import BaseModel
+
+from yoga_relief.config import Settings
 from yoga_relief.models import (
     CAUSE_LABELS,
     DURATION_LABELS,
@@ -22,13 +25,38 @@ SYSTEM_PROMPT = """你是一位溫和、專業的瑜伽老師，用繁體中文�
 - 只能針對清單裡的動作說明，不得新增、改名或刪除動作。
 - 不得診斷病名，不得建議用藥或療程。
 - summary 寫 2 到 3 句，先同理狀況，再說明整體練習方向。
-- why 的每一句不超過 40 字，說這個動作對他這個狀況的幫助。
+- why 是一個陣列，清單裡每個動作各一筆：pose_id 填動作的 id。
+- 每筆 why 不超過 40 字，說這個動作對他這個狀況的幫助。
 - order 是建議的練習順序，必須剛好包含清單裡每個動作的 id 各一次。
 - 語氣溫和，不用驚嘆號。"""
 
 
+class WhyItem(BaseModel):
+    pose_id: str
+    why: str
+
+
+class ClaudeAdvice(BaseModel):
+    """送給 Claude 的 structured output 形狀（wire model）。
+
+    不能用 dict[str, str]：Anthropic 的 structured output 不支援 additionalProperties，
+    SDK 會把它改寫成空物件，模型就只能回 {}。所以 why 用「明確欄位的陣列」。
+    """
+
+    summary: str
+    why: list[WhyItem]
+    order: list[str]
+
+
 class AdviceValidationError(ValueError):
     """Claude 的回應沒有通過形狀檢查。"""
+
+
+def make_anthropic_client(settings: Settings):
+    """用 Settings 裡的 key 建 SDK client；key 為 None 時 SDK 會自己找環境變數或登入檔。"""
+    import anthropic
+
+    return anthropic.Anthropic(api_key=settings.anthropic_api_key, timeout=30.0)
 
 
 def build_user_prompt(body_part: BodyPart, answers: Answers, poses: list[Pose]) -> str:
@@ -58,17 +86,22 @@ def generate_advice(
 ) -> AdviceOutput:
     response = client.messages.parse(
         model=model,
-        max_tokens=1024,
+        max_tokens=4096,  # opus 的 adaptive thinking 也算在這個額度裡
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": build_user_prompt(body_part, answers, poses)}],
-        output_format=AdviceOutput,
+        output_format=ClaudeAdvice,
         output_config={"effort": "low"},
     )
-    output = response.parsed_output
-    if output is None:
+    wire: ClaudeAdvice | None = response.parsed_output
+    if wire is None:
         raise AdviceValidationError(
             f"沒有 parsed_output（stop_reason={getattr(response, 'stop_reason', None)!r}）"
         )
+    output = AdviceOutput(
+        summary=wire.summary,
+        why={item.pose_id: item.why for item in wire.why},
+        order=wire.order,
+    )
     _validate(output, [p.id for p in poses])
     return output
 

@@ -58,7 +58,11 @@ def _apply_order(poses: list[Pose], record: AdviceRecord | None) -> list[Pose]:
     if record is None:
         return poses
     by_id = {p.id: p for p in poses}
-    ordered = [by_id[i] for i in record.order if i in by_id]
-    seen = {p.id for p in ordered}
+    ordered: list[Pose] = []
+    seen: set[str] = set()
+    for pose_id in record.order:
+        if pose_id in by_id and pose_id not in seen:
+            ordered.append(by_id[pose_id])
+            seen.add(pose_id)
     ordered.extend(p for p in poses if p.id not in seen)
     return ordered

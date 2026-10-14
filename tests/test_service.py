@@ -71,3 +71,10 @@ def test_live_advisor_used_only_on_miss(repo):
     assert service.advise(req()).advice.summary == "live"
     assert service.advise(req()).advice.summary == "live"
     assert len(client.messages.calls) == 1
+
+
+def test_duplicate_ids_in_order_render_each_pose_once(repo):
+    store = AdviceStore({advice_key("neck", req()): record(
+        order=["c", "c", "a", "b"], why={"a": "A", "b": "B", "c": "C"})})
+    res = AdviceService(repo, store).advise(req())
+    assert [p.id for p in res.poses] == ["c", "a", "b"]

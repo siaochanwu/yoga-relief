@@ -5,7 +5,8 @@ from pathlib import Path
 import pytest
 import yaml
 
-from yoga_relief.models import BodyPart, Pose
+from yoga_relief.claude_client import ClaudeAdvice, WhyItem
+from yoga_relief.models import AdviceOutput, BodyPart, Pose
 
 
 def make_pose(id: str, parts: list[str], intensity: str = "gentle") -> Pose:
@@ -64,6 +65,12 @@ class _FakeMessages:
             raise item
         if item is None:
             return _FakeResponse(None, stop_reason="refusal")
+        if isinstance(item, AdviceOutput):   # 測試用內部形狀描述，這裡轉成 SDK 會回的 wire 形狀
+            item = ClaudeAdvice(
+                summary=item.summary,
+                why=[WhyItem(pose_id=k, why=v) for k, v in item.why.items()],
+                order=item.order,
+            )
         return _FakeResponse(item)
 
 

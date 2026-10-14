@@ -92,3 +92,12 @@
 - **`re.S`（DOTALL）**：讓 `.` 也能匹配換行，抓多行的 `<g>...</g>`。
 - **`rf"..."`**：raw + f-string 同時用，正則裡的反斜線不用跳脫，又能插變數。
 - **`StaticFiles` 與 `FileResponse`**：FastAPI 直接當靜態檔伺服器，不需要 nginx 就能跑整個 app。
+
+## 最終審查後的修正
+
+- **structured output 的 schema 限制**：Anthropic 的 structured output 不支援 `additionalProperties`，所以 pydantic 的 `dict[str, str]` 會被 SDK 改寫成空物件、模型只能回 `{}`。解法是「wire model」：對外用明確欄位的 `list[WhyItem]`，收到後再轉成程式內部好用的 dict。**外部契約和內部型別分開**是常見做法。
+- **契約測試（contract test）**：`test_wire_schema_survives_sdk_transform` 直接呼叫 SDK 的 `transform_schema`，鎖住「送出去的 schema 長什麼樣」。假物件（FakeClient）測不到的事，就要有一個測試碰真正的函式庫。
+- **`env_ignore_empty=True`**：pydantic-settings 預設把 `.env` 的 `KEY=` 當成空字串，空字串轉 bool 會失敗；這個設定讓空值等於「沒設定」。
+- **`.env` 不會進 `os.environ`**：pydantic-settings 只把值填進 `Settings` 物件，所以要用的第三方函式庫（這裡是 anthropic SDK）拿不到；必須自己宣告欄位並明確傳 `api_key=`。
+- **`max_tokens` 包含 thinking**：opus 5.5 的 adaptive thinking 用的 token 也算在 `max_tokens` 內，太小會讓輸出被截斷、結構化輸出解析失敗。
+- **前端的防禦性解析**：`localStorage` 裡的資料視同外部輸入，逐筆檢查形狀（`isValidEntry`）再用，一筆壞資料不能拖垮整個畫面。

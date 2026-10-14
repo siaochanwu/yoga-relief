@@ -4,9 +4,12 @@ from tests.conftest import FakeClient, make_pose
 from yoga_relief.claude_client import (
     SYSTEM_PROMPT,
     AdviceValidationError,
+    ClaudeAdvice,
     build_user_prompt,
     generate_advice,
+    make_anthropic_client,
 )
+from yoga_relief.config import Settings
 from yoga_relief.models import AdviceOutput, Answers, BodyPart
 
 PART = BodyPart(id="neck", name_zh="頸部", views=["front"])
@@ -31,8 +34,9 @@ def test_generate_advice_calls_parse_with_expected_params():
     call = client.messages.calls[0]
     assert call["model"] == "m"
     assert call["system"] == SYSTEM_PROMPT
-    assert call["output_format"] is AdviceOutput
+    assert call["output_format"] is ClaudeAdvice
     assert call["output_config"] == {"effort": "low"}
+    assert call["max_tokens"] >= 4096   # opus 的 thinking 也算在 max_tokens 裡，1024 會截斷
     assert call["messages"][0]["role"] == "user"
 
 
@@ -57,3 +61,34 @@ def test_invalid_output_shapes_raise(bad):
     client = FakeClient([bad])
     with pytest.raises(AdviceValidationError):
         generate_advice(client, model="m", body_part=PART, answers=ANSWERS, poses=POSES)
+
+
+def test_wire_schema_survives_sdk_transform():
+    # Anthropic structured output 不支援 additionalProperties 型別，SDK 會把 dict[str, str]
+    # 改寫成空物件；wire model 必須用明確欄位，這個測試鎖住這件事。
+    from anthropic.lib._parse._transform import transform_schema
+
+    schema = transform_schema(ClaudeAdvice.model_json_schema())
+    why = schema["properties"]["why"]
+    assert why["type"] == "array"
+    item = why["items"]
+    if "$ref" in item:
+        item = schema["$defs"][item["$ref"].rsplit("/", 1)[-1]]
+    assert set(item["properties"]) == {"pose_id", "why"}
+    assert set(item["required"]) == {"pose_id", "why"}
+
+
+def test_make_anthropic_client_passes_key_and_timeout(monkeypatch):
+    import anthropic
+
+    captured = {}
+
+    class FakeAnthropic:
+        def __init__(self, **kwargs):
+            captured.update(kwargs)
+
+    monkeypatch.setattr(anthropic, "Anthropic", FakeAnthropic)
+    settings = Settings(_env_file=None, ANTHROPIC_API_KEY="sk-test")
+    make_anthropic_client(settings)
+    assert captured["api_key"] == "sk-test"
+    assert captured["timeout"] == 30.0

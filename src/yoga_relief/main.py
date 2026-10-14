@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from yoga_relief.advisor import DEFAULT_ADVICE_PATH, AdviceStore, LiveAdvisor
 from yoga_relief.api import router
+from yoga_relief.claude_client import make_anthropic_client
 from yoga_relief.config import Settings
 from yoga_relief.repository import DATA_DIR, Repository
 from yoga_relief.service import AdviceService
@@ -29,9 +30,7 @@ def create_app(
     live = None
     if settings.live_ai:
         if client is None:
-            import anthropic
-
-            client = anthropic.Anthropic(timeout=30.0)
+            client = make_anthropic_client(settings)
         live = LiveAdvisor(client, settings.claude_model)
 
     app = FastAPI(title="Yoga Relief")

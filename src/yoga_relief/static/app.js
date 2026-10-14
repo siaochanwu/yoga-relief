@@ -172,10 +172,19 @@ function renderResult(res) {
 const HISTORY_KEY = 'yoga_relief_history';
 const HISTORY_MAX = 20;
 
+function isValidEntry(item) {
+  // 半壞的資料（null、數字、缺 result、poses 不是陣列）直接丟掉，不讓一筆壞資料拖垮整頁
+  return !!item && typeof item === 'object'
+    && typeof item.ts === 'string'
+    && !!item.result && typeof item.result === 'object'
+    && Array.isArray(item.result.poses)
+    && !!item.result.body_part;
+}
+
 function safeParse(text) {
   try {
     const data = JSON.parse(text);
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data) ? data.filter(isValidEntry) : [];
   } catch (e) {
     return [];
   }
@@ -226,12 +235,15 @@ function renderHistory() {
     const li = el('li');
     li.appendChild(el('div', 'ts', formatTs(item.ts)));
     li.appendChild(el('div', null,
-      `${item.body_part_name || item.body_part}・${LABELS.severity[item.severity] || item.severity}`));
+      `${item.body_part_name || item.result.body_part.name_zh || item.body_part}・${LABELS.severity[item.severity] || item.severity || ''}`));
     li.addEventListener('click', () => {
-      if (!item.result) return;
-      state.result = item.result;
-      renderResult(item.result);
-      showScreen('result');
+      try {
+        state.result = item.result;
+        renderResult(item.result);
+        showScreen('result');
+      } catch (e) {
+        showError('這筆紀錄無法顯示，請重新查詢。');
+      }
     });
     ul.appendChild(li);
   }
