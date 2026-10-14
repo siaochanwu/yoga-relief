@@ -71,14 +71,105 @@ function resetSelection() {
   $('#btn-next').disabled = true;
 }
 
-// ---- 問卷（Task 11 實作）----
-function renderQuestions() {}
-async function submitAnswers() {}
+// ---- 問卷 ----
+function renderQuestions() {
+  $('#q-title').textContent = `${state.partName}：告訴我們一些狀況`;
+  const container = $('#questions');
+  container.innerHTML = '';
+  for (const q of QUESTIONS) {
+    const block = document.createElement('div');
+    block.className = 'question';
+    const title = document.createElement('p');
+    title.textContent = q.title;
+    block.appendChild(title);
+    const options = document.createElement('div');
+    options.className = 'options';
+    for (const [value, label] of Object.entries(LABELS[q.key])) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'option' + (state.answers[q.key] === value ? ' selected' : '');
+      btn.textContent = label;
+      btn.addEventListener('click', () => {
+        state.answers[q.key] = value;
+        options.querySelectorAll('.option').forEach((o) => o.classList.toggle('selected', o === btn));
+        updateSubmitState();
+      });
+      options.appendChild(btn);
+    }
+    block.appendChild(options);
+    container.appendChild(block);
+  }
+  updateSubmitState();
+}
 
-// ---- 結果（Task 11 實作）----
-function renderResult(res) {}
+function updateSubmitState() {
+  const done = QUESTIONS.every((q) => state.answers[q.key] !== null);
+  $('#btn-submit').disabled = !done;
+}
+
+async function submitAnswers() {
+  const payload = { body_part: state.part, ...state.answers };
+  $('#btn-submit').disabled = true;
+  try {
+    const res = await fetch('/api/advice', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    state.result = await res.json();
+    saveHistory(payload, state.result);
+    renderResult(state.result);
+    showScreen('result');
+  } catch (e) {
+    showError('暫時無法取得資料，請稍後再試。');
+  } finally {
+    updateSubmitState();
+  }
+}
+
+// ---- 結果 ----
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function renderResult(res) {
+  const root = $('#result');
+  root.innerHTML = '';
+  root.appendChild(el('h2', null, `${res.body_part.name_zh}的緩解動作`));
+
+  if (res.seek_medical) {
+    root.appendChild(el('div', 'banner',
+      '你的狀況建議先由醫師或物理治療師評估。以下只列出最溫和的動作，若做了更痛請立即停止。'));
+  }
+  root.appendChild(el('div', 'summary', res.advice ? res.advice.summary : GENERIC_SUMMARY));
+
+  res.poses.forEach((pose, index) => {
+    const card = el('div', 'card');
+    card.appendChild(el('h3', null, `${index + 1}. ${pose.name_zh}`));
+    card.appendChild(el('div', 'en', pose.name_en));
+    card.appendChild(el('div', 'duration', `建議時長：${pose.duration}`));
+
+    const steps = el('ol');
+    pose.steps.forEach((s) => steps.appendChild(el('li', null, s)));
+    card.appendChild(steps);
+
+    const cautions = [...pose.cautions, ...pose.contraindications.map((c) => `避免：${c}`)];
+    if (cautions.length) {
+      const ul = el('ul', 'caution');
+      cautions.forEach((c) => ul.appendChild(el('li', null, c)));
+      card.appendChild(ul);
+    }
+    if (pose.why) card.appendChild(el('div', 'why', `為什麼適合你：${pose.why}`));
+    root.appendChild(card);
+  });
+}
 
 // ---- 紀錄（Task 12 實作）----
+function saveHistory(payload, result) {}
 function renderHistory() {}
 function clearHistory() {}
 
