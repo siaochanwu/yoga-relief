@@ -29,6 +29,7 @@ def test_advice_without_record(client):
     body = res.json()
     assert body["seek_medical"] is False and body["advice"] is None
     assert len(body["poses"]) >= 3 and body["poses"][0]["why"] is None
+    assert body["poses"][0]["image"].startswith("/static/images/")
     assert {"id", "name_zh", "name_en", "steps", "duration", "cautions",
             "contraindications", "intensity", "why"} <= set(body["poses"][0])
 

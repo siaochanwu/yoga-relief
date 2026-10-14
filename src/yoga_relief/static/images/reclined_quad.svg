@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="側臥股四頭肌伸展">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <circle cx="30" cy="100" r="9"/>
+    <polyline points="50,100 110,100"/>
+    <polyline points="110,100 180,110"/>
+    <polyline points="110,100 84,122 58,104"/>
+    <polyline points="50,100 60,104"/>
+  </g>
+</svg>

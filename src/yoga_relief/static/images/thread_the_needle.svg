@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="穿針式">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="20,118 50,118 55,72 120,100"/>
+    <circle cx="136" cy="108" r="9"/>
+    <polyline points="120,100 72,116"/>
+    <polyline points="120,100 166,68"/>
+  </g>
+</svg>

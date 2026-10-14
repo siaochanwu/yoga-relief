@@ -19,3 +19,21 @@ def test_index_references_all_assets():
     assert '/static/style.css' in html and '/static/app.js' in html
     for screen in ("screen-select", "screen-questions", "screen-result", "screen-history"):
         assert f'id="{screen}"' in html
+
+
+def test_every_pose_has_an_existing_svg_image():
+    import xml.etree.ElementTree as ET
+
+    repo = Repository.load(DATA_DIR)
+    seen = set()
+    for part in repo.body_parts:
+        for pose in repo.poses_for(part.id):
+            if pose.id in seen:
+                continue
+            seen.add(pose.id)
+            assert pose.image == f"/static/images/{pose.id}.svg", pose.id
+            path = STATIC_DIR / "images" / f"{pose.id}.svg"
+            assert path.exists(), pose.id
+            root = ET.fromstring(path.read_text(encoding="utf-8"))
+            assert root.tag.endswith("svg"), pose.id
+    assert len(seen) == 30

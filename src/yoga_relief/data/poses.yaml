@@ -1,4 +1,5 @@
 - id: cat_cow
+  image: /static/images/cat_cow.svg
   name_zh: 貓牛式
   name_en: Cat-Cow
   body_parts: [lower_back, upper_back, neck]
@@ -16,6 +17,7 @@
     - 懷孕後期
 
 - id: child_pose
+  image: /static/images/child_pose.svg
   name_zh: 嬰兒式
   name_en: Child's Pose
   body_parts: [lower_back, upper_back, hip, shoulder]
@@ -33,6 +35,7 @@
     - 懷孕（膝蓋打開更寬並避免壓到腹部）
 
 - id: supine_twist
+  image: /static/images/supine_twist.svg
   name_zh: 仰臥扭轉
   name_en: Supine Spinal Twist
   body_parts: [lower_back, glute, upper_back]
@@ -50,6 +53,7 @@
     - 懷孕
 
 - id: knees_to_chest
+  image: /static/images/knees_to_chest.svg
   name_zh: 抱膝式
   name_en: Knees-to-Chest
   body_parts: [lower_back, glute]
@@ -66,6 +70,7 @@
     - 懷孕
 
 - id: sphinx
+  image: /static/images/sphinx.svg
   name_zh: 人面獅身式
   name_en: Sphinx
   body_parts: [lower_back, chest]
@@ -82,6 +87,7 @@
     - 懷孕
 
 - id: neck_side_stretch
+  image: /static/images/neck_side_stretch.svg
   name_zh: 頸側伸展
   name_en: Seated Neck Side Stretch
   body_parts: [neck]
@@ -98,6 +104,7 @@
     - 頸椎急性受傷
 
 - id: chin_tuck
+  image: /static/images/chin_tuck.svg
   name_zh: 收下巴
   name_en: Chin Tuck
   body_parts: [neck, upper_back]
@@ -112,6 +119,7 @@
   contraindications: []
 
 - id: thread_the_needle
+  image: /static/images/thread_the_needle.svg
   name_zh: 穿針式
   name_en: Thread the Needle
   body_parts: [shoulder, upper_back, neck]
@@ -128,6 +136,7 @@
     - 肩關節急性受傷
 
 - id: shoulder_rolls
+  image: /static/images/shoulder_rolls.svg
   name_zh: 肩膀畫圓
   name_en: Shoulder Rolls
   body_parts: [shoulder, neck]
@@ -142,6 +151,7 @@
   contraindications: []
 
 - id: eagle_arms
+  image: /static/images/eagle_arms.svg
   name_zh: 鷹式手臂
   name_en: Eagle Arms
   body_parts: [shoulder, upper_back]
@@ -158,6 +168,7 @@
     - 肩關節急性受傷
 
 - id: cow_face_arms
+  image: /static/images/cow_face_arms.svg
   name_zh: 牛面式手臂
   name_en: Cow Face Arms
   body_parts: [shoulder, chest]
@@ -174,6 +185,7 @@
     - 肩關節急性受傷
 
 - id: puppy_pose
+  image: /static/images/puppy_pose.svg
   name_zh: 小狗伸展式
   name_en: Extended Puppy Pose
   body_parts: [shoulder, upper_back, chest]
@@ -190,6 +202,7 @@
     - 肩關節急性受傷
 
 - id: cobra
+  image: /static/images/cobra.svg
   name_zh: 眼鏡蛇式
   name_en: Cobra
   body_parts: [chest, lower_back]
@@ -208,6 +221,7 @@
     - 腹部手術剛恢復
 
 - id: supported_fish
+  image: /static/images/supported_fish.svg
   name_zh: 支撐魚式
   name_en: Supported Fish
   body_parts: [chest, upper_back]
@@ -224,6 +238,7 @@
     - 頸椎急性受傷
 
 - id: chest_opener_clasp
+  image: /static/images/chest_opener_clasp.svg
   name_zh: 背後扣手開胸
   name_en: Standing Chest Opener
   body_parts: [chest, shoulder]
@@ -239,6 +254,7 @@
     - 肩關節急性受傷
 
 - id: wrist_circles
+  image: /static/images/wrist_circles.svg
   name_zh: 手腕畫圓
   name_en: Wrist Circles
   body_parts: [wrist]
@@ -253,6 +269,7 @@
   contraindications: []
 
 - id: prayer_stretch
+  image: /static/images/prayer_stretch.svg
   name_zh: 合掌手腕伸展
   name_en: Prayer Wrist Stretch
   body_parts: [wrist]
@@ -269,6 +286,7 @@
     - 腕隧道症候群急性期
 
 - id: tabletop_wrist_release
+  image: /static/images/tabletop_wrist_release.svg
   name_zh: 四足跪姿手腕放鬆
   name_en: Tabletop Wrist Release
   body_parts: [wrist]
@@ -284,6 +302,7 @@
     - 手腕急性受傷
 
 - id: low_lunge
+  image: /static/images/low_lunge.svg
   name_zh: 低弓步
   name_en: Low Lunge
   body_parts: [hip, thigh]
@@ -300,6 +319,7 @@
     - 膝蓋急性受傷
 
 - id: figure_four
+  image: /static/images/figure_four.svg
   name_zh: 仰臥四字式
   name_en: Supine Figure-Four
   body_parts: [hip, glute]
@@ -316,6 +336,7 @@
     - 膝蓋急性受傷
 
 - id: butterfly
+  image: /static/images/butterfly.svg
   name_zh: 束角式
   name_en: Bound Angle (Butterfly)
   body_parts: [hip, thigh]
@@ -331,6 +352,7 @@
     - 鼠蹊部拉傷
 
 - id: pigeon
+  image: /static/images/pigeon.svg
   name_zh: 鴿式
   name_en: Pigeon
   body_parts: [hip, glute]
@@ -348,6 +370,7 @@
     - 膝蓋急性受傷
 
 - id: reclined_quad
+  image: /static/images/reclined_quad.svg
   name_zh: 側臥股四頭肌伸展
   name_en: Side-Lying Quad Stretch
   body_parts: [thigh, knee]
@@ -364,6 +387,7 @@
     - 膝蓋急性受傷
 
 - id: half_hamstring
+  image: /static/images/half_hamstring.svg
   name_zh: 單腿前彎
   name_en: Seated Head-to-Knee
   body_parts: [thigh, knee, calf, lower_back]
@@ -380,6 +404,7 @@
     - 大腿後側肌肉拉傷
 
 - id: legs_up_wall
+  image: /static/images/legs_up_wall.svg
   name_zh: 靠牆抬腿
   name_en: Legs Up the Wall
   body_parts: [knee, calf, ankle, lower_back]
@@ -396,6 +421,7 @@
     - 懷孕後期
 
 - id: supported_hero
+  image: /static/images/supported_hero.svg
   name_zh: 支撐英雄式
   name_en: Supported Hero
   body_parts: [knee, thigh, ankle]
@@ -412,6 +438,7 @@
     - 腳踝急性受傷
 
 - id: downward_dog
+  image: /static/images/downward_dog.svg
   name_zh: 下犬式
   name_en: Downward-Facing Dog
   body_parts: [calf, thigh, shoulder, upper_back]
@@ -429,6 +456,7 @@
     - 高血壓未控制
 
 - id: calf_wall_stretch
+  image: /static/images/calf_wall_stretch.svg
   name_zh: 靠牆小腿伸展
   name_en: Wall Calf Stretch
   body_parts: [calf, ankle]
@@ -445,6 +473,7 @@
     - 阿基里斯腱急性受傷
 
 - id: ankle_circles
+  image: /static/images/ankle_circles.svg
   name_zh: 腳踝畫圓
   name_en: Ankle Circles
   body_parts: [ankle]
@@ -460,6 +489,7 @@
     - 腳踝急性扭傷
 
 - id: bridge
+  image: /static/images/bridge.svg
   name_zh: 橋式
   name_en: Bridge
   body_parts: [glute, lower_back, chest]

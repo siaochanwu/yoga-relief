@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="嬰兒式">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="25,118 60,118 66,100 122,104"/>
+    <circle cx="140" cy="108" r="9"/>
+    <polyline points="122,104 180,118"/>
+  </g>
+</svg>

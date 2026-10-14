@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="靠牆抬腿">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <line x1="162" y1="15" x2="162" y2="124" stroke-width="3" opacity=".35"/>
+    <circle cx="30" cy="112" r="9"/>
+    <polyline points="50,112 154,112 157,26"/>
+    <polyline points="60,112 100,118"/>
+  </g>
+</svg>

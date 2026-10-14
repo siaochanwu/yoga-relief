@@ -151,6 +151,15 @@ function renderResult(res) {
     const card = el('div', 'card');
     card.appendChild(el('h3', null, `${index + 1}. ${pose.name_zh}`));
     card.appendChild(el('div', 'en', pose.name_en));
+    if (pose.image) {
+      const img = document.createElement('img');
+      img.className = 'pose-image';
+      img.src = pose.image;
+      img.alt = `${pose.name_zh}示意圖`;
+      img.loading = 'lazy';
+      img.addEventListener('error', () => img.remove());   // 圖缺了就拿掉，版面不破
+      card.appendChild(img);
+    }
     card.appendChild(el('div', 'duration', `建議時長：${pose.duration}`));
 
     const steps = el('ol');

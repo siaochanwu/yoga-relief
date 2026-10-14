@@ -101,3 +101,10 @@
 - **`.env` 不會進 `os.environ`**：pydantic-settings 只把值填進 `Settings` 物件，所以要用的第三方函式庫（這裡是 anthropic SDK）拿不到；必須自己宣告欄位並明確傳 `api_key=`。
 - **`max_tokens` 包含 thinking**：opus 5.5 的 adaptive thinking 用的 token 也算在 `max_tokens` 內，太小會讓輸出被截斷、結構化輸出解析失敗。
 - **前端的防禦性解析**：`localStorage` 裡的資料視同外部輸入，逐筆檢查形狀（`isValidEntry`）再用，一筆壞資料不能拖垮整個畫面。
+
+## 動作示意圖
+
+- **用腳本產生資產而不是手刻 30 個檔案**：示意圖由一支一次性 Python 腳本（放在 scratchpad，不進 repo）依座標資料產生，風格一致、改一處全部重產。
+- **`re.subn` 搭配 `flags=re.M`**：`^` 在多行模式下匹配每一行的開頭，用來在 YAML 每個 `- id:` 後插入 `image:`；回傳值同時給你替換次數，可以立刻斷言是 30。
+- **`xml.etree.ElementTree.fromstring`**：標準庫就能驗證 SVG 是合法 XML、根元素是 `<svg>`，不用額外套件。
+- **SVG 放在 `<img>` 裡拿不到 CSS 的 `currentColor`**：圖片是獨立文件，外層樣式進不去，所以顏色要寫死在 SVG 裡。

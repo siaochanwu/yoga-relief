@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="四足跪姿手腕放鬆">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="20,118 50,118 50,68 135,68"/>
+    <circle cx="152" cy="62" r="9"/>
+    <polyline points="135,68 135,118"/>
+    <line x1="136" y1="118" x2="116" y2="118" stroke-width="3"/><polyline points="122.0,114.0 116,118 122.0,122.0" stroke-width="3"/>
+  </g>
+</svg>

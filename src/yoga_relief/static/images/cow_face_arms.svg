@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="牛面式手臂">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="100,118 100,72"/>
+    <circle cx="100" cy="50" r="9"/>
+    <polyline points="70,72 130,72"/>
+    <polyline points="130,72 140,42 112,52 106,72"/>
+    <polyline points="70,72 62,104 96,98 100,90"/>
+  </g>
+</svg>

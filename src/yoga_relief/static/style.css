@@ -66,6 +66,8 @@ h2 { font-size: 20px; margin: 16px 0 8px; }
 .card h3 { margin: 0 0 4px; font-size: 17px; }
 .card .en { color: var(--muted); font-size: 13px; }
 .card .duration { color: var(--accent-dark); font-size: 14px; margin: 4px 0 8px; }
+.card .pose-image { display: block; width: 100%; max-width: 260px; height: 140px; margin: 8px auto;
+  color: var(--accent-dark); background: #f3f7f4; border-radius: 8px; }
 .card ol, .card ul { padding-left: 20px; margin: 6px 0; }
 .card .why { background: #f3f7f4; padding: 8px; border-radius: 8px; margin-top: 8px; font-size: 14px; }
 .card .caution { color: var(--muted); font-size: 14px; }

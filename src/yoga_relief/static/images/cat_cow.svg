@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="貓牛式">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <circle cx="152" cy="62" r="9"/>
+    <path d="M135,68 Q92,40 50,68"/>
+    <polyline points="135,68 138,118"/>
+    <polyline points="50,68 50,118 20,118"/>
+  </g>
+</svg>
