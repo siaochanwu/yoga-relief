@@ -2,8 +2,9 @@ import json
 
 import pytest
 
-from yoga_relief.advisor import AdviceStore, advice_key
-from yoga_relief.models import AdviceRecord, Answers
+from tests.conftest import FakeClient, make_pose
+from yoga_relief.advisor import AdviceStore, LiveAdvisor, advice_key
+from yoga_relief.models import AdviceOutput, AdviceRecord, Answers, BodyPart
 
 
 def make_record(pose_ids=("a", "b")) -> AdviceRecord:
@@ -61,3 +62,19 @@ def test_put_save_load_roundtrip(tmp_path):
     assert "總結" in text                            # 不是 \\uXXXX
     again = AdviceStore.load(path)
     assert "z" in again and again.lookup("z", ["a", "b"]).summary == "總結"
+
+
+_PART = BodyPart(id="neck", name_zh="頸部", views=["front"])
+_ANS = Answers(severity="mild", duration="days", cause="sleep")
+_POSES = [make_pose("a", ["neck"]), make_pose("b", ["neck"])]
+
+
+def test_live_advisor_caches_and_swallows_errors():
+    good = AdviceOutput(summary="s", why={"a": "1", "b": "2"}, order=["a", "b"])
+    client = FakeClient([RuntimeError("boom"), good])
+    live = LiveAdvisor(client, "m")
+    assert live.get("k", _PART, _ANS, _POSES) is None          # 第一次失敗
+    rec = live.get("k", _PART, _ANS, _POSES)                    # 第二次成功
+    assert rec is not None and rec.pose_ids == ["a", "b"]
+    assert live.get("k", _PART, _ANS, _POSES) is rec            # 第三次用快取
+    assert len(client.messages.calls) == 2

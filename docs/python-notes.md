@@ -72,3 +72,16 @@
 - **區域 import**（`main()` 裡的 `import anthropic`）：讓只跑測試的人不需要 API 相關設定就能 import 這個模組；平常不建議，但入口函式是合理的例外。
 - **`except Exception` 的取捨**：一般程式碼應該抓具體的例外；長時間跑的批次腳本例外，因為「一筆壞了繼續跑」比「整批中斷」更重要，所以明確註解原因並用 `# noqa` 標記。
 - **`datetime.now(UTC).isoformat()`**：永遠用帶時區的時間，不要 naive datetime。
+
+## Task 9：設定、Service、API
+
+- **pydantic-settings**：`BaseSettings` 的欄位自動從環境變數與 `.env` 讀，型別轉換（`"true"` → `True`）也包辦。`validation_alias` 指定環境變數名稱。
+- **三層分工**：`api.py`（HTTP：status code、request/response）→ `service.py`（流程：查部位、分流、查 advice、排序）→ `repository/advisor/triage`（各自一件事）。service 不知道 HTTP，所以 `test_service.py` 不用啟動 web server。
+- **application factory `create_app()`**：每次呼叫都建一個獨立的 app，參數可換資料路徑與設定。測試用 `tmp_path` 就不會互相污染；模組層級的 `app = create_app()` 給 uvicorn 用。
+- **`app.state`**：FastAPI 提供的「掛東西」的地方，路由用 `request.app.state.service` 取得，不用全域變數。
+- **`HTTPException` + `raise ... from e`**：把內部例外轉成 HTTP 狀態碼，同時保留原因鏈。
+- **`response_model=`**：FastAPI 依 pydantic 模型序列化輸出並產生 OpenAPI 文件（打開 `/docs` 看）。
+- **`TestClient`**：不開 port、直接在程序內呼叫 app，測 HTTP 層最快的方法。
+- **`monkeypatch.setenv / delenv`**：測試裡暫時改環境變數，測完自動還原。
+- **`dict | dict`**（3.9+）：合併兩個 dict，右邊覆蓋左邊，測試裡用來「基底 + 覆寫」。
+- **`model_copy(update=...)`**：pydantic 物件是不可變思維，要改就產生新的拷貝。

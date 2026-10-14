@@ -3,11 +3,13 @@
 import json
 import logging
 import os
+from datetime import UTC, datetime
 from pathlib import Path
 
 from pydantic import TypeAdapter
 
-from yoga_relief.models import AdviceRecord, Answers
+from yoga_relief.claude_client import generate_advice
+from yoga_relief.models import AdviceRecord, Answers, BodyPart, Pose
 
 log = logging.getLogger(__name__)
 
@@ -52,3 +54,33 @@ class AdviceStore:
 
     def __contains__(self, key: object) -> bool:
         return key in self._records
+
+
+class LiveAdvisor:
+    """開發用：查不到 advice.json 時即時呼叫 Claude。結果只存記憶體。"""
+
+    def __init__(self, client, model: str) -> None:
+        self._client = client
+        self._model = model
+        self._cache: dict[str, AdviceRecord] = {}
+
+    def get(
+        self, key: str, body_part: BodyPart, answers: Answers, poses: list[Pose]
+    ) -> AdviceRecord | None:
+        if key in self._cache:
+            return self._cache[key]
+        try:
+            output = generate_advice(
+                self._client, model=self._model, body_part=body_part, answers=answers, poses=poses
+            )
+        except Exception:  # noqa: BLE001 - 即時模式失敗只影響 advice 欄位，不能讓 API 500
+            log.exception("即時呼叫 Claude 失敗（key=%s）", key)
+            return None
+        record = AdviceRecord(
+            **output.model_dump(),
+            pose_ids=[p.id for p in poses],
+            model=self._model,
+            generated_at=datetime.now(UTC).isoformat(timespec="seconds"),
+        )
+        self._cache[key] = record
+        return record
