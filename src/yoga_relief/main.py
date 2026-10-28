@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -14,6 +14,17 @@ from yoga_relief.repository import DATA_DIR, Repository
 from yoga_relief.service import AdviceService
 
 STATIC_DIR = Path(__file__).parent / "static"
+
+# 前端沒有 inline script／style、不載外部資源，所以 CSP 可以只允許同源。
+SECURITY_HEADERS = {
+    "Content-Security-Policy": (
+        "default-src 'self'; img-src 'self' data:; base-uri 'self'; "
+        "form-action 'self'; frame-ancestors 'none'"
+    ),
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "no-referrer",
+}
 
 
 def create_app(
@@ -33,7 +44,15 @@ def create_app(
             client = make_anthropic_client(settings)
         live = LiveAdvisor(client, settings.claude_model)
 
-    app = FastAPI(title="Yoga Relief")
+    # 公開服務不開 /docs、/redoc、/openapi.json，少暴露一點 API 結構
+    app = FastAPI(title="Yoga Relief", docs_url=None, redoc_url=None, openapi_url=None)
+
+    @app.middleware("http")
+    async def add_security_headers(request: Request, call_next):
+        response = await call_next(request)
+        response.headers.update(SECURITY_HEADERS)
+        return response
+
     app.state.settings = settings
     app.state.repo = repo
     app.state.store = store

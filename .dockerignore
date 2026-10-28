@@ -1,0 +1,15 @@
+.git
+.venv
+.env
+.env.*
+!.env.example
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+.playwright-mcp
+.superpowers
+.DS_Store
+docs
+tests
+scripts

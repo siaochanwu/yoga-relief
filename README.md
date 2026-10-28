@@ -27,6 +27,19 @@ uv run python scripts/build_advice.py          # 只補缺的、過期的
 uv run python scripts/build_advice.py --force  # 全部重產
 ```
 
+## 部署
+
+無資料庫、執行時不寫檔、預設不呼叫 Claude，所以任何能跑容器的平台都行（Render、Fly.io、Railway）。
+
+```bash
+docker build -t yoga-relief .
+docker run --rm -p 8000:8000 yoga-relief
+```
+
+平台會透過 `PORT` 環境變數指定埠，容器會自動讀。其他環境變數都不用設。
+
+**正式環境不要設 `ANTHROPIC_API_KEY`，也不要開 `YOGA_LIVE_AI`。** 網站沒有登入，開了即時模式等於讓任何人用你的 key 呼叫 Claude。AI 說明一律用預先產好、一起打包進映像的 `advice.json`。
+
 ## 手機實機驗收清單
 
 在同一個 Wi-Fi 下用手機開 `http://<電腦 IP>:8000`（啟動時加 `--host 0.0.0.0`）。
