@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="仰臥四字式">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <circle cx="25" cy="110" r="9"/>
+    <polyline points="45,110 95,110"/>
+    <polyline points="95,110 120,76 100,96"/>
+    <polyline points="95,110 136,90 108,80"/>
+    <polyline points="45,110 116,82"/>
+  </g>
+</svg>

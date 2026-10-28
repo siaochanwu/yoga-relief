@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="背後扣手開胸">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="95,120 95,75 100,40"/>
+    <circle cx="103" cy="25" r="9"/>
+    <polyline points="100,40 70,60 66,82"/>
+  </g>
+</svg>

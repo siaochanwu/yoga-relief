@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="合掌手腕伸展">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="100,118 100,72"/>
+    <circle cx="100" cy="50" r="9"/>
+    <polyline points="70,72 130,72"/>
+    <polyline points="70,72 82,96 97,84"/>
+    <polyline points="130,72 118,96 103,84"/>
+    <polyline points="100,74 100,96"/>
+  </g>
+</svg>

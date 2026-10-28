@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="手腕畫圓">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="55,112 108,70"/>
+    <circle cx="118" cy="62" r="8"/>
+    <path d="M97.2,74.0 A24,24 0 1 1 113.8,85.6" stroke-width="3"/><polyline points="119.0,90.6 113.8,85.6 120.4,82.7" stroke-width="3"/>
+  </g>
+</svg>

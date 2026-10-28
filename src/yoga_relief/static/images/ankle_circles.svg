@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="腳踝畫圓">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="100,40 100,95 136,100"/>
+    <path d="M75.6,88.1 A26,26 0 1 1 80.1,113.7" stroke-width="3"/><polyline points="80.9,120.9 80.1,113.7 87.0,115.7" stroke-width="3"/>
+  </g>
+</svg>

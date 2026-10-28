@@ -27,6 +27,28 @@ uv run python scripts/build_advice.py          # 只補缺的、過期的
 uv run python scripts/build_advice.py --force  # 全部重產
 ```
 
+## 部署
+
+無資料庫、執行時不寫檔、預設不呼叫 Claude，所以任何能跑容器的平台都行（Render、Fly.io、Railway）。
+
+```bash
+docker build -t yoga-relief .
+docker run --rm -p 8000:8000 yoga-relief
+```
+
+平台會透過 `PORT` 環境變數指定埠，容器會自動讀。其他環境變數都不用設。
+
+**正式環境不要設 `ANTHROPIC_API_KEY`，也不要開 `YOGA_LIVE_AI`。** 網站沒有登入，開了即時模式等於讓任何人用你的 key 呼叫 Claude。AI 說明一律用預先產好、一起打包進映像的 `advice.json`。
+
 ## 手機實機驗收清單
 
-見本檔最下方（Task 12 補上）。
+在同一個 Wi-Fi 下用手機開 `http://<電腦 IP>:8000`（啟動時加 `--host 0.0.0.0`）。
+
+- [ ] 正面／背面可切換；正面 8 個、背面 8 個區塊都可點，點到會變綠並顯示名稱
+- [ ] 三題沒選完「看動作」不可按；「上一步」保留已選部位
+- [ ] 結果頁三種狀態：有 AI 說明 / 無 AI 說明（通用文字）/ 就醫提示（只有 gentle 動作）
+- [ ] 每張卡片有名稱、英文名、建議時長、步驟、注意事項；有 AI 時有「為什麼適合你」
+- [ ] 右上角紀錄：新增、回看、清除都正常；最多 20 筆
+- [ ] 頁面底部每個畫面都看得到免責聲明
+- [ ] 關掉伺服器重新整理：顯示錯誤訊息與「重試」按鈕
+- [ ] 無橫向捲動，字體在 iPhone SE 寬度（375px）仍可讀

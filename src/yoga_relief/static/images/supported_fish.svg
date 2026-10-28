@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="支撐魚式">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <rect x="84" y="104" width="30" height="12" rx="6" stroke-width="3" opacity=".5"/>
+    <polyline points="15,118 50,118"/>
+    <path d="M50,118 Q100,92 122,100"/>
+    <circle cx="150" cy="106" r="9"/>
+    <polyline points="122,100 176,118"/>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+- id: neck
+  name_zh: 頸部
+  views: [front, back]
+- id: shoulder
+  name_zh: 肩膀
+  views: [front, back]
+- id: chest
+  name_zh: 胸部
+  views: [front]
+- id: wrist
+  name_zh: 手腕
+  views: [front]
+- id: hip
+  name_zh: 髖部
+  views: [front]
+- id: thigh
+  name_zh: 大腿
+  views: [front, back]
+- id: knee
+  name_zh: 膝蓋
+  views: [front]
+- id: ankle
+  name_zh: 腳踝／足底
+  views: [front, back]
+- id: upper_back
+  name_zh: 上背
+  views: [back]
+- id: lower_back
+  name_zh: 下背／腰
+  views: [back]
+- id: glute
+  name_zh: 臀部
+  views: [back]
+- id: calf
+  name_zh: 小腿
+  views: [back]

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="低弓步">
+  <g fill="none" stroke="#466d5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="20" y1="124" x2="180" y2="124" stroke-width="3" opacity=".35"/>
+    <polyline points="25,118 60,118 110,85 150,80 150,120"/>
+    <polyline points="110,85 112,40"/>
+    <circle cx="113" cy="25" r="9"/>
+    <polyline points="112,40 146,76"/>
+  </g>
+</svg>
